@@ -9,7 +9,7 @@ const Main = () => {
     lastname: "",
     sex: "Male",
     status: "",
-    prevschool: "",
+    lastschool: "",
     course: "",
     sy1: "",
     sy2: "",
@@ -161,12 +161,12 @@ const Main = () => {
               <Form.Label>Previous School/School Last Attended</Form.Label>
               <Form.Control
                 onChange={(e) =>
-                  setInfo({ ...info, prevschool: e.target.value })
+                  setInfo({ ...info, lastschool: e.target.value })
                 }
                 type="text"
                 placeholder="Full School Name"
                 required
-                name="prevschool"
+                name="lastschool"
               />
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             </Form.Group>

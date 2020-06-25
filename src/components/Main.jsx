@@ -147,7 +147,7 @@ const Main = () => {
             <Form.Group>
               <Form.Label>Student Status</Form.Label>
               <Form.Control
-                name="semester"
+                name="status"
                 as="select"
                 required
                 onChange={(e) => setInfo({ ...info, status: e.target.value })}

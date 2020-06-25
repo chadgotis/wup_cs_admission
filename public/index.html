@@ -34,6 +34,37 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <form name="info" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="firstname" />
+      <input type="text" name="middlename" />
+      <input type="text" name="lastname" />
+      <input type="radio" name="sex" value="male" />
+      <input type="radio" name="sex" value="female" />
+      <select name="status">
+        <option value="">-- Please Select --</option>
+        <option value="new">new</option>
+        <option value="old">old</option>
+        <option value="transferee">transferee</option>
+      </select>
+      <input type="text" name="prev-school" />
+      <select name="course">
+        <option value="">-- Please Select --</option>
+        <option value="Bachelor of Science in Computer Science">
+          Bachelor of Science in Computer Science
+        </option>
+        <option value="Associate in Computer Technology">
+          Associate in Computer Technology
+        </option>
+      </select>
+      <input type="number" name="sy1" />
+      <input type="number" name="sy2" />
+      <select name="semester">
+        <option value="">--Please Select --</option>
+        <option value="1st Semester">1st Semester</option>
+        <option value="2nd Semester">2nd Semester</option>
+        <option value="Summer">Summer</option>
+      </select>
+    </form>
     <div id="root"></div>
     <!--
       This HTML file is a template.

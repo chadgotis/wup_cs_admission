@@ -4,15 +4,15 @@ import Swal from "sweetalert2";
 
 const Main = () => {
   const [info, setInfo] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
     sex: "Male",
     status: "",
-    prevSchool: "",
+    prevschool: "",
     course: "",
-    schoolYear1: "",
-    schoolYear2: "",
+    sy1: "",
+    sy2: "",
     semester: "",
   });
 
@@ -79,7 +79,7 @@ const Main = () => {
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 onChange={(e) =>
-                  setInfo({ ...info, firstName: e.target.value })
+                  setInfo({ ...info, firstname: e.target.value })
                 }
                 type="text"
                 placeholder="Enter First name"
@@ -93,7 +93,7 @@ const Main = () => {
               <Form.Label>Middle Name</Form.Label>
               <Form.Control
                 onChange={(e) =>
-                  setInfo({ ...info, middleName: e.target.value })
+                  setInfo({ ...info, middlename: e.target.value })
                 }
                 type="text"
                 placeholder="Enter Middle name"
@@ -105,7 +105,7 @@ const Main = () => {
             <Form.Group>
               <Form.Label>Last Name</Form.Label>
               <Form.Control
-                onChange={(e) => setInfo({ ...info, lastName: e.target.value })}
+                onChange={(e) => setInfo({ ...info, lastname: e.target.value })}
                 name="lastname"
                 type="text"
                 placeholder="Enter Last name"
@@ -163,12 +163,12 @@ const Main = () => {
               <Form.Label>Previous School/School Last Attended</Form.Label>
               <Form.Control
                 onChange={(e) =>
-                  setInfo({ ...info, prevSchool: e.target.value })
+                  setInfo({ ...info, prevschool: e.target.value })
                 }
                 type="text"
                 placeholder="Full School Name"
                 required
-                name="prev-school"
+                name="prevschool"
               />
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             </Form.Group>
@@ -199,9 +199,7 @@ const Main = () => {
                     type="number"
                     placeholder={date.getFullYear()}
                     required
-                    onChange={(e) =>
-                      setInfo({ ...info, schoolYear1: e.target.value })
-                    }
+                    onChange={(e) => setInfo({ ...info, sy1: e.target.value })}
                   />
                 </Col>
                 -
@@ -211,9 +209,7 @@ const Main = () => {
                     placeholder={date.getFullYear() + 1}
                     required
                     name="sy2"
-                    onChange={(e) =>
-                      setInfo({ ...info, schoolYear2: e.target.value })
-                    }
+                    onChange={(e) => setInfo({ ...info, sy2: e.target.value })}
                   />
                 </Col>
               </Row>

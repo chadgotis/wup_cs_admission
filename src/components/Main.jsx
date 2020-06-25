@@ -123,7 +123,6 @@ const Main = () => {
                   <Form.Check
                     lg={1}
                     type="radio"
-                    id="default-radio"
                     label="Male"
                     name="sex"
                     value="Male"
@@ -134,7 +133,6 @@ const Main = () => {
                   <Form.Check
                     lg={1}
                     type="radio"
-                    id="default-radio"
                     label="Female"
                     value="Female"
                     name="sex"

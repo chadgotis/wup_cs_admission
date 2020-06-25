@@ -72,6 +72,7 @@ const Main = () => {
             data-netlify="true"
             method="POST"
           >
+            <input type="hidden" name="form-name" value="contact" />
             <h2 className="text-center">Admission Registration Page</h2>
             <h3>Personal Info</h3>
             <Form.Group>

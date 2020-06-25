@@ -64,11 +64,13 @@ const Main = () => {
       <Container fluid>
         <Row lg={2} className="justify-content-center mt-5 mb-4">
           <Form
+            name="info"
             className="mt-3"
             noValidate
             validated={validated}
             onSubmit={handleSubmit}
             data-netlify="true"
+            method="POST"
           >
             <h2 className="text-center">Admission Registration Page</h2>
             <h3>Personal Info</h3>

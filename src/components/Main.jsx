@@ -40,7 +40,7 @@ const Main = () => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "admission", ...info }),
+      body: encode({ "form-name": "info", ...info }),
     })
       .then((res) =>
         Swal.fire({

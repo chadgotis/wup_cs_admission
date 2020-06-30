@@ -41,7 +41,7 @@ const Main = ({ history }) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "Admission Registration", ...info }),
+      body: encode({ "form-name": "info", ...info }),
     })
       .then((res) => {
         setInfo({

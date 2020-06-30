@@ -245,14 +245,27 @@ const Main = ({ history }) => {
               <Form.Label>School Year</Form.Label>
               <Row lg={4}>
                 <Col>
-                  <Form.Control name="sy1" required type="number" as="select">
+                  <Form.Control
+                    name="sy1"
+                    required
+                    type="number"
+                    as="select"
+                    onChange={(e) => setInfo({ ...info, sy1: e.target.value })}
+                    value={info.sy1}
+                  >
                     <option value="">--Select Year--</option>
                     {getYearList()}
                   </Form.Control>
                 </Col>
                 -
                 <Col>
-                  <Form.Control name="sy2" required as="select">
+                  <Form.Control
+                    name="sy2"
+                    required
+                    as="select"
+                    onChange={(e) => setInfo({ ...info, sy2: e.target.value })}
+                    value={info.sy2}
+                  >
                     <option value="">--Select Year--</option>
                     {getYearList()}
                   </Form.Control>

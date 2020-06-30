@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 
-const Main = () => {
+const Main = ({ history }) => {
   const [info, setInfo] = useState({
+    email: "",
     firstname: "",
     middlename: "",
     lastname: "",
@@ -40,15 +41,33 @@ const Main = () => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "info", ...info }),
+      body: encode({ "form-name": "Admission Registration", ...info }),
     })
-      .then((res) =>
+      .then((res) => {
+        setInfo({
+          ...info,
+          email: "",
+          firstname: "",
+          middlename: "",
+          lastname: "",
+          status: "",
+          lastschool: "",
+          course: "",
+          sy1: "",
+          sy2: "",
+          semester: "",
+        });
         Swal.fire({
           icon: "success",
           title: "Success!",
           text: "Submitted form successfuly",
-        })
-      )
+          confirmButtonText: "OK!!",
+        }).then((res) => {
+          if (res.value) {
+            history.push("/thank");
+          }
+        });
+      })
       .catch((error) =>
         Swal.fire({
           icon: "error",
@@ -59,13 +78,28 @@ const Main = () => {
   };
 
   const date = new Date();
+
+  const getYearList = () => {
+    const min = 2015;
+    const max = date.getFullYear() + 2;
+    const list = [];
+
+    for (let i = min; i < max; i++) {
+      list.unshift(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
+    }
+    return list;
+  };
   return (
     <div>
       <Container fluid>
         <Row lg={2} className="justify-content-center mt-5 mb-4">
           <Form
             name="info"
-            className="mt-3"
+            className="mt-3 ml-1 mr-1"
             noValidate
             validated={validated}
             onSubmit={handleSubmit}
@@ -75,6 +109,19 @@ const Main = () => {
             <input type="hidden" name="form-name" value="info" />
             <h2 className="text-center">Admission Registration Page</h2>
             <h3>Personal Info</h3>
+            <Form.Group>
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                onChange={(e) => setInfo({ ...info, email: e.target.value })}
+                type="email"
+                placeholder="Enter email"
+                required
+                min="2"
+                name="email"
+                value={info.email}
+              />
+              <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+            </Form.Group>
             <Form.Group>
               <Form.Label>First Name</Form.Label>
               <Form.Control
@@ -86,6 +133,7 @@ const Main = () => {
                 required
                 min="2"
                 name="firstname"
+                value={info.firstname}
               />
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             </Form.Group>
@@ -99,6 +147,7 @@ const Main = () => {
                 placeholder="Enter Middle name"
                 required
                 name="middlename"
+                value={info.middlename}
               />
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             </Form.Group>
@@ -110,6 +159,7 @@ const Main = () => {
                 type="text"
                 placeholder="Enter Last name"
                 required
+                value={info.lastname}
               />
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             </Form.Group>
@@ -149,6 +199,7 @@ const Main = () => {
                 as="select"
                 required
                 onChange={(e) => setInfo({ ...info, status: e.target.value })}
+                value={info.status}
               >
                 <option value="">--Please Select --</option>
                 <option value="New">New</option>
@@ -163,6 +214,7 @@ const Main = () => {
                 onChange={(e) =>
                   setInfo({ ...info, lastschool: e.target.value })
                 }
+                value={info.lastschool}
                 type="text"
                 placeholder="Full School Name"
                 required
@@ -177,6 +229,7 @@ const Main = () => {
                 as="select"
                 required
                 onChange={(e) => setInfo({ ...info, course: e.target.value })}
+                value={info.course}
               >
                 <option value="">-- Please Select a Course --</option>
                 <option value="Bachelor of Science in Computer Science">
@@ -192,23 +245,17 @@ const Main = () => {
               <Form.Label>School Year</Form.Label>
               <Row lg={4}>
                 <Col>
-                  <Form.Control
-                    name="sy1"
-                    type="number"
-                    placeholder={date.getFullYear()}
-                    required
-                    onChange={(e) => setInfo({ ...info, sy1: e.target.value })}
-                  />
+                  <Form.Control name="sy1" required type="number" as="select">
+                    <option value="">--Select Year--</option>
+                    {getYearList()}
+                  </Form.Control>
                 </Col>
                 -
                 <Col>
-                  <Form.Control
-                    type="number"
-                    placeholder={date.getFullYear() + 1}
-                    required
-                    name="sy2"
-                    onChange={(e) => setInfo({ ...info, sy2: e.target.value })}
-                  />
+                  <Form.Control name="sy2" required as="select">
+                    <option value="">--Select Year--</option>
+                    {getYearList()}
+                  </Form.Control>
                 </Col>
               </Row>
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -220,6 +267,7 @@ const Main = () => {
                 as="select"
                 required
                 onChange={(e) => setInfo({ ...info, semester: e.target.value })}
+                value={info.semester}
               >
                 <option value="">--Please Select --</option>
                 <option value="1st Semester">1st Semester</option>

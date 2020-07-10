@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 const Main = ({ history }) => {
   const [info, setInfo] = useState({
     email: "",
+    phone: "",
     firstname: "",
     middlename: "",
     lastname: "",
@@ -47,6 +48,7 @@ const Main = ({ history }) => {
         setInfo({
           ...info,
           email: "",
+          phone: "",
           firstname: "",
           middlename: "",
           lastname: "",
@@ -119,6 +121,19 @@ const Main = ({ history }) => {
                 min="2"
                 name="email"
                 value={info.email}
+              />
+              <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Phone Number</Form.Label>
+              <Form.Control
+                onChange={(e) => setInfo({ ...info, phone: e.target.value })}
+                type="number"
+                placeholder="0912-345-6789"
+                required
+                min="10"
+                name="email"
+                value={info.phone}
               />
               <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             </Form.Group>
